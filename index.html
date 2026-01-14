@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>UC Night Float Survival Guide</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#050810" />
+
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png" />
+  <link rel="icon" type="image/png" sizes="512x512" href="icons/icon-512.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon-180.png" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="app-header">
+      <div class="header-left">
+        <h1 class="app-title">UC Night Float Survival Guide</h1>
+        <p class="app-subtitle">Quick-reference sections for overnight coverage. Tap a heading to open.</p>
+      </div>
+      <div class="header-right">
+        <span class="app-badge">ClinicalToolsDEV</span>
+      </div>
+    </header>
+
+    <main class="app-main">
+      <section class="card card-search" id="home-controls">
+        <div class="search-row">
+          <label class="field-label" for="searchInput">Search sections</label>
+          <input id="searchInput" class="field-input" type="text" placeholder="Type to filter… (e.g., Hyperkalemia)" autocomplete="off" />
+        </div>
+        <div class="search-hint">Press <span class="kbd">Enter</span> to jump to the top match.</div>
+      </section>
+
+      <section class="card card-home" id="homeView" aria-live="polite"></section>
+
+      <section class="card card-section hidden" id="sectionView" aria-live="polite">
+        <div class="section-topbar">
+          <button class="btn-secondary" id="backBtn" type="button" aria-label="Back to sections">← Back</button>
+          <div class="section-titlewrap">
+            <h2 class="card-title" id="sectionTitle"></h2>
+            <div class="section-meta" id="sectionMeta"></div>
+          </div>
+        </div>
+        <div id="sectionContent" class="section-content"></div>
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      <p class="disclaimer">This tool was developed using the ClinicalToolsDEV framework. For educational and decision-support purposes only. It does not replace clinical judgment, institutional guidelines, or specialist consultation.</p>
+      <p class="disclaimer subtle">If this is a medical emergency, follow your institution’s escalation pathways (rapid response / code team).</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("./service-worker.js")
+          .catch(err => console.error("Service worker registration failed:", err));
+      });
+    }
+  </script>
+</body>
+</html>
