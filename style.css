@@ -209,24 +209,6 @@ a:hover{text-decoration:underline}
   line-height:1.42;
 }
 
-.table-wrap{overflow-x:auto; -webkit-overflow-scrolling:touch}
-table{
-  width:100%;
-  border-collapse:collapse;
-  margin:.6rem 0 .8rem;
-  font-size:.92rem;
-}
-th,td{
-  border:1px solid var(--color-border-subtle);
-  padding:.55rem .55rem;
-  vertical-align:top;
-}
-th{
-  background:rgba(255,255,255,.03);
-  color:var(--color-text-secondary);
-  font-weight:700;
-}
-
 .app-footer{
   margin-top:.5rem;
   padding:.75rem .25rem 1.25rem;
@@ -251,12 +233,6 @@ th{
   }
 }
 
-/* Remove number spinners */
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; margin:0; }
-input[type=number]{ -moz-appearance:textfield; }
-
-/* Header icon */
 .header-icon-btn{
   border:0;
   background:transparent;
@@ -274,7 +250,8 @@ input[type=number]{ -moz-appearance:textfield; }
   box-shadow:0 10px 25px rgba(0,0,0,0.45);
 }
 
-/* Collapsible dropdowns */
+/* ===== Dropdowns (now details/summary, not button) ===== */
+
 .drop{
   margin:.7rem 0;
   border:1px solid var(--color-border-subtle);
@@ -282,32 +259,93 @@ input[type=number]{ -moz-appearance:textfield; }
   border-radius:14px;
   overflow:hidden;
 }
-.drop-btn{
+
+/* summary styled like your prior drop button, but behaves like a dropdown */
+.drop-summary{
+  list-style:none; /* remove default marker space */
   width:100%;
   display:flex;
   align-items:center;
   justify-content:space-between;
   gap:.75rem;
   padding:.75rem .9rem;
-  background:transparent;
   color:var(--color-text-primary);
-  border:0;
   cursor:pointer;
   font-weight:800;
   letter-spacing:.2px;
+  -webkit-tap-highlight-color:transparent;
 }
-.drop-btn:hover{background:rgba(22,242,154,.04)}
-.drop-btn:active{background:rgba(255,255,255,.03)}
-.drop-btn .chev{
+.drop-summary:hover{background:rgba(22,242,154,.04)}
+.drop-summary:active{background:rgba(255,255,255,.03)}
+
+/* remove the native triangle marker */
+.drop-summary::-webkit-details-marker{display:none}
+.drop-summary::marker{content:""}
+
+.drop-title{
+  flex:1;
+  min-width:0;
+}
+
+.drop .chev{
   color:var(--color-text-muted);
   font-weight:900;
   transition:transform .14s ease;
 }
-.drop-btn[aria-expanded="true"] .chev{transform:rotate(180deg)}
+
+.drop[open] .chev{transform:rotate(180deg)}
+
 .drop-panel{
   padding:.35rem .9rem .85rem;
   border-top:1px solid var(--color-border-subtle);
 }
+
+/* If a primary bullet had no body, hide empty panel spacing */
+.drop-panel[data-empty="true"]{
+  display:none;
+}
+
+/* ===== Clinical List System (indentation + wrapped alignment) ===== */
+.clinical-list{
+  margin:.45rem 0 .65rem;
+  padding-left:1.25rem;
+  list-style-position:outside;
+}
+.clinical-list.level-1{ padding-left:1.25rem; list-style-type:disc; }
+.clinical-list.level-2{ padding-left:1.55rem; list-style-type:circle; margin-top:.25rem; }
+.clinical-list.level-3{ padding-left:1.85rem; list-style-type:square; }
+
+.clinical-list > li{
+  margin:.28rem 0;
+  line-height:1.45;
+}
+
+.clinical-list li.is-empty{
+  display:none !important;
+}
+
+.li-cont{
+  margin-top:.25rem;
+  color:var(--color-text-primary);
+}
+
+/* Make lists inside dropdowns look identical */
+.drop-panel .clinical-list{
+  margin:.35rem 0 .55rem;
+}
+
+/* Sources block */
+.sources{
+  margin-top:1rem;
+  padding-top:.8rem;
+  border-top:1px solid var(--color-border-subtle);
+}
+.sources h3{
+  margin:.2rem 0 .5rem;
+  font-size:.98rem;
+  color:var(--color-text-secondary);
+}
+.sources li{color:var(--color-text-secondary)}
 
 /* Reference viewer */
 .ref-frame-wrap{
@@ -328,76 +366,4 @@ input[type=number]{ -moz-appearance:textfield; }
   font-size:.82rem;
   color:var(--color-text-muted);
   line-height:1.35;
-}
-
-/* Sources block */
-.sources{
-  margin-top:1rem;
-  padding-top:.8rem;
-  border-top:1px solid var(--color-border-subtle);
-}
-.sources h3{
-  margin:.2rem 0 .5rem;
-  font-size:.98rem;
-  color:var(--color-text-secondary);
-}
-.sources li{color:var(--color-text-secondary)}
-
-/* ===== Clinical List System (FIXED INDENTATION + BULLET ALIGNMENT) ===== */
-
-.clinical-list{
-  margin:.45rem 0 .65rem;
-  padding-left:1.25rem;
-  list-style-position:outside; /* key: wrapped text aligns under text */
-}
-
-.clinical-list.level-1{ padding-left:1.25rem; list-style-type:disc; }
-.clinical-list.level-2{ padding-left:1.55rem; list-style-type:circle; margin-top:.25rem; }
-.clinical-list.level-3{ padding-left:1.85rem; list-style-type:square; }
-
-.clinical-list > li{
-  margin:.28rem 0;
-  line-height:1.45;
-}
-
-/* Hide empty bullets that slip through */
-.clinical-list li.is-empty{
-  display:none !important;
-}
-
-/* Continuation text that gets pulled into previous bullet */
-.li-cont{
-  margin-top:.25rem;
-  color:var(--color-text-primary);
-}
-
-/* Make lists inside dropdowns look identical */
-.drop-panel .clinical-list{
-  margin:.35rem 0 .55rem;
-}
-
-/* ===== Clinical List System (Indentation + Bullet Alignment Fix) ===== */
-/* PDF-derived content requires proper UL padding and list-style outside so wrapped lines align under text */
-.section-content ul.clinical-list{
-  margin: .45rem 0 .65rem;
-  padding-left: 1.25rem; /* overrides generic UL padding */
-  list-style-position: outside;
-}
-
-.section-content ul.clinical-list.level-1{ list-style-type: disc; padding-left: 1.25rem; }
-.section-content ul.clinical-list.level-2{ list-style-type: circle; padding-left: 1.55rem; margin-top: .25rem; }
-.section-content ul.clinical-list.level-3{ list-style-type: square; padding-left: 1.85rem; }
-
-.section-content ul.clinical-list > li{
-  margin: .28rem 0;
-  line-height: 1.45;
-}
-
-/* Hide empty bullets produced by PDF conversion */
-.section-content li.is-empty{ display:none !important; }
-
-/* Continuation lines merged into prior bullet */
-.section-content .li-cont{
-  margin-top: .25rem;
-  line-height: 1.45;
 }
