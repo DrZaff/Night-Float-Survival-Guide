@@ -1,8 +1,17 @@
-// UC Night Float Survival Guide (updated from Content-File.pdf)
+// UC Night Float Survival Guide
 // Offline-capable sections with in-app reference viewer.
+// FIX: post-process section HTML to repair list nesting + indentation.
 
 const APP_TITLE = "UC Night Float Survival Guide";
-const SECTIONS = [{"title": "Antiemetics", "html": "<ul>\n<li>Common agents: Check last EKG for QTc</li>\n<ul>\n<li>Zofran 4mg IV/PO q6hrs prn</li>\n<li>Phenergan 12.5-25mg PO/IV/IM q6 hrs prn</li>\n<li>Compazine 5-10mg PO/IV/IM q6-8 hrs prn</li>\n<li>Others:</li>\n<li>Diphenhydramine 25-50 mg PO q 6 or 10 mg IV q 6</li>\n<li>Scopolamine 1.5 mg patch q 72 hr - uses: preventative</li>\n<li>Lorazepam - uses: refractory nausea</li>\n<li>Dexamethasone - uses: prophylactic, chemotherapy-related</li>\n</ul>\n</ul>", "sources": []}, {"title": "Abdominal Pain", "html": "<ul>\n<li>Assessing Abdominal Pain</li>\n</ul>\n<p>Is this new or old, is it worsening?</p>\n<p>If new or worsening, go see and evaluate patient</p>\n<ul>\n<ul>\n<li></li>\n<li></li>\n<li>What are the vitals?</li>\n<li>Why is the patient admitted?</li>\n<li>Differential Guide by Location</li>\n<li>Diffuse: Peritonitis</li>\n<ul>\n<li>Mimics: Diabetic Ketoacidosis, Adrenal Insufficiency</li>\n<li>Epigastric: PUD, pancreatitis, gastritis, AAA</li>\n<li>Mimics: Myocardial Infarction</li>\n<li>RUQ: cholecystitis, biliary colic, cholangitis, hepatitis</li>\n<li>Mimics: PE, pulmonary infarction, pneumonia, rib fracture</li>\n<li>LUQ: Gastritis, pancreatitis, ovarian torsion, ectopic pregnancy</li>\n<li>Mimics: splenic infarction, rib fracture</li>\n<li>RLQ: Appendicitis, ureteral kidney stone, hernia, ovarian torsion, ectopic pregnancy,</li>\n</ul>\n</ul>\n</ul>\n<p>constipation</p>\n<ul>\n<ul>\n<li>LLQ: Diverticulitis, ureteral kidney stone, hernia</li>\n<li>Suprapubic: Cystitis, bladder outlet obstruction</li>\n<li>Urgent diagnoses requiring surgical consultation and co-management:</li>\n<li>Peritonitis: severe pain with +rebound, +guarding, absent bowel sounds. Upright</li>\n</ul>\n</ul>\n<p>abdominal imaging with +free air.</p>\n<p>Ischemic bowel: pain out of proportion to exam, +bloody stool.</p>\n<ul>\n<ul>\n<li></li>\n<li>Abdominal Aortic Aneurysm: severe pain, large pulsatile mass, hypotension</li>\n<li>Obstruction: nausea, vomiting, bloat/distention. AXR with air-fluid levels and transition</li>\n</ul>\n</ul>\n<p>point</p>\n<ul>\n<ul>\n<li>Cholangititis: Fever, RUQ pain, jaundice (+/- hypotension and AMS). LFTs in cholestatic</li>\n</ul>\n</ul>\n<p>pattern.</p>\n<ul>\n<li>Work up</li>\n<ul>\n<li>Consider CBC, Lactate, Lipase, LFTs, UA, Abdominal XR, CT versus ultrasound (cannot be</li>\n</ul>\n</ul>\n<p>done overnight)</p>\n<ul>\n<li>Note: If surgical evaluation warranted, consider holding narcotic administration until surgical</li>\n</ul>\n<p>team has performed bedside exam.</p>", "sources": []}, {"title": "Adults with Medical Complexity", "html": "<ul>\n<li>Adults with medical complexity typically have complex, chronic medical conditions associated</li>\n</ul>\n<p>with use of medical technology and increased need for care coordination.</p>\n<ul>\n<li>We are seeing more adults with medical complexity as they outgrow their pediatric team, please</li>\n</ul>\n<p>use these one-pagers as a reference! (Med-peds attendings are a great resource in a pinch!)</p>\n<ul>\n<ul>\n<li><a href=\"#\" class=\"ref-link\" data-ref=\"Airway-Clearance.pdf\">Airway Clearance one-pager</a></li>\n<li><a href=\"#\" class=\"ref-link\" data-ref=\"Tracheostomies.pdf\">Tracheostomy one-pager</a></li>\n<li><a href=\"#\" class=\"ref-link\" data-ref=\"shunts.pdf\">Shunts one-pager</a></li>\n<li><a href=\"#\" class=\"ref-link\" data-ref=\"Baclofen.pdf\">Baclofen pump one-pager</a></li>\n<li><a href=\"#\" class=\"ref-link\" data-ref=\"Enteral-Feeding.pdf\">G-Tube one-pager</a></li>\n<li><a href=\"#\" class=\"ref-link\" data-ref=\"Autonomic-Dysfunction.pdf\">Autonomic Dysfunction one-pager</a></li>\n</ul>\n</ul>", "sources": []}, {"title": "Altered Mental Status", "html": "<ul>\n<li>Calls regarding a change in mental status always warrant prompt notification of your senior and</li>\n</ul>\n<p>bedside evaluation of the patient.</p>\n<ul>\n<li>Step 1. Determine urgency of call – Gather some specifics from nurse. Essential questions</li>\n</ul>\n<p>include: What has changed? What is the patient’s general appearance/status currently? Last time</p>\n<p>seen normal? New set of vitals?</p>\n<ul>\n<ul>\n<li></li>\n</ul>\n</ul>\n<p>If patient acutely non-responsive, reasonable to ask nurse to call a rapid/code (582-</p>\n<p>3333). If patient is flipping through TV channels and only seemed slightly forgetful, have</p>\n<p>time to gather more information. If there is ANY concern for possible stroke, call a rapid</p>\n<p>response 1st, then initiate Stroke Team (584-8282).</p>\n<ul>\n<li>Step 2. Information gathering – Review signout, H&amp;P and most recent progress note can be</li>\n</ul>\n<p>helpful, meds (anti-cholingergics? Opioids? Benzos?), labs. Finally, obtain new vitals if not already</p>\n<p>done and perform bedside exam with focus on mental status and neuro exam.</p>\n<ul>\n<li>Step 3. Differential and diagnostic testing – Focus diagnostic testing on most common and life</li>\n</ul>\n<p>threatening causes of delirium. Below is a limited list to get you started.</p>\n<p>Infection – UTI? Pneumonia? Cellulitis? Bacteremia?</p>\n<ul>\n<ul>\n<li>Drugs – Evidence of illicit drug use? opioids, benzos, anti-cholinergics? Any new meds?</li>\n<li>Electrolyte/metabolic disturbances</li>\n<li>Lack of drugs – alcohol/benzo withdrawl?</li>\n<li></li>\n<li>Reduced sensory inputs – Glasses? Hearing aids?</li>\n<li></li>\n<li>Urinary and fecal disorders – Urinary retention? Constipation?</li>\n<li>Myocardial/pulmonary disorders – MI, COPD, HF, etc?</li>\n</ul>\n</ul>\n<p>Intracranial disorders – new focal deficits?</p>", "sources": []}, {"title": "Agitation", "html": "<ul>\n<li>What should I do if my patient is agitated with aggression?</li>\n<ul>\n<li>Can call if a code violet if patient is an imminent threat to self or others</li>\n<li>Otherwise, try de-escalation techniques:</li>\n<ul>\n<li>Reorient</li>\n<li>Do not argue with patient, be respectful</li>\n<li></li>\n<li></li>\n</ul>\n</ul>\n</ul>\n<p>Involve family if possible, even over phone</p>\n<p>Initiate \"Sleep Care Bundle\" orderset to prevent and treat delirium</p>\n<ul>\n<ul>\n<li></li>\n</ul>\n</ul>\n<p>Is the patient easily reoriented and redirectable? Would a Telesitter or Sitter work?</p>\n<ul>\n<ul>\n<li>Physical restraints and pharmacologic sedation – Only appropriate if patient is exhibiting</li>\n</ul>\n</ul>\n<p>behavior that is dangerous to the patient or others. Examples of dangerous behavior can</p>\n<p>include pulling at lines, tubes, and drains.</p>\n<ul>\n<li>Pharmacologic options:</li>\n<ul>\n<li>Antipsychotics are the preferred agent. Start with low dose. Before administration, review</li>\n</ul>\n</ul>\n<p>ECG or obtain ECG to check QTc. QTc prolongation is a relative contraindication for</p>\n<p>administration of anti-psychotics. Below is some general information regarding the most</p>\n<h3>commonly used anti-psychotics</h3>\n<p>Initial dose: 0.25 - 0.5 mg</p>\n<div class=\"drop med-drop\">\n  <button class=\"drop-btn\" type=\"button\" aria-expanded=\"false\">Haloperidol<span class=\"chev\">▾</span></button>\n  <div class=\"drop-panel\" hidden>\n    <ul>\n<li></li>\n<li>Routes: Oral, IM, or IV (IV associated with greater QTc prolongation, avoid)</li>\n<li>Degree of sedation: Low</li>\n<li>Risk of extrapyramidal symptoms: High</li>\n</ul>\n<p>Initial dose: 0.25 - 0.5 mg</p>\n  </div>\n</div>\n<div class=\"drop med-drop\">\n  <button class=\"drop-btn\" type=\"button\" aria-expanded=\"false\">Risperidone<span class=\"chev\">▾</span></button>\n  <div class=\"drop-panel\" hidden>\n    <ul>\n<li></li>\n<li>Routes: Oral, IM</li>\n<li>Degree of sedation: Low</li>\n<li>Risk of extrapyramidal symptoms: High</li>\n</ul>\n  </div>\n</div>\n<div class=\"drop med-drop\">\n  <button class=\"drop-btn\" type=\"button\" aria-expanded=\"false\">Olanzapine<span class=\"chev\">▾</span></button>\n  <div class=\"drop-panel\" hidden>\n    <ul>\n<li></li>\n</ul>\n<p>Initial dose: 2.5 - 5 mg</p>\n<ul>\n<li>Routes: Oral, sublingual, IM</li>\n<li>Degree of sedation: Moderate</li>\n<li>Risk of extrapyramidal symptoms: Moderate</li>\n</ul>\n<p>Initial dose: 12.5 - 25 mg</p>\n  </div>\n</div>\n<div class=\"drop med-drop\">\n  <button class=\"drop-btn\" type=\"button\" aria-expanded=\"false\">Quetiapine<span class=\"chev\">▾</span></button>\n  <div class=\"drop-panel\" hidden>\n    <ul>\n<li></li>\n<li>Routes: Oral</li>\n<li>Degree of sedation: High</li>\n<li>Risk of extrapyramidal symptoms: Low</li>\n<li>Notes:</li>\n<ul>\n<li>Benzodiazepines should be avoided as the amnestic effect of benzos will tend to worsen</li>\n</ul>\n</ul>\n<p>delirium, but may have to be used in some circumstances.</p>\n<ul>\n<ul>\n<li>Patient should be seen and plan reviewed with senior prior to administration of any</li>\n</ul>\n</ul>\n<p>new meds.</p>\n  </div>\n</div>", "sources": ["Marcantonio, Edward R. \"Delirium in hospitalized older adults.\" New England Journal of Medicine 377.15 (2017): 1456-1466"]}, {"title": "AMA", "html": "<ul>\n<li>Discharge Against Medical Advice (AMA) is when a patient chooses to leave the hospital before the</li>\n</ul>\n<p>medical team recommends discharge.</p>\n<p>1.  Notify Senior Resident</p>\n<p>2.  See patient quickly as they may elope</p>\n<p>3.  Confirm patient has medical capacity</p>\n<p>4.  Attempt to identify motivation for leaving and address if possible.</p>\n<p>5.  Obtain AMA form from HUC or bedside RN.</p>\n<p>6.  Explain to patient potential consequences of leaving prior to completion of treatment.</p>\n<p>Obtain teach-back from patient. Have patient sign form. Remove all lines.</p>\n<p>7.  Document your conversation. If capacity exam was necessary, use .capacity template.</p>", "sources": []}, {"title": "Arrhythmias", "html": "<ul>\n<li>Arrythmias are common and range from benign to life threatening. Even the non-life threatening</li>\n</ul>\n<p>rhythms may be a clue to something else going on with the patient (Electrolytes, Acidosis, EP</p>\n<p>issue, Hypoxia, PE, infection).</p>\n<ul>\n<li>Tachycardia: HR&gt;100 includes Atrial Fib, NSVT, Vtach, Vfib, SVT.</li>\n</ul>\n<div class=\"drop\">\n  <button class=\"drop-btn\" type=\"button\" aria-expanded=\"false\">General approach:<span class=\"chev\">▾</span></button>\n  <div class=\"drop-panel\" hidden>\n    \n  </div>\n</div>\n<p>1.  Step 1: Get a ECG, vital and get on a heart monitor if unstable vitals call rapid response.</p>\n<ul>\n<ul>\n<ul>\n<li></li>\n</ul>\n</ul>\n</ul>\n<ul>\n<ul>\n<ul>\n<li></li>\n</ul>\n</ul>\n</ul>\n<p>Important ECG points: Don’t over analyze. Is it Wide or Narrow? Regular or Irregular</p>\n<p>If Vtach or Vfib this is a CODE make sure pads in place and shock following ACLS</p>\n<p>2.  Step 2: Examine patient and determine if they are symptomatic or asymptomatic. If</p>\n<p>symptomatic call Senior and Rapid</p>\n<p>3.  Step 3: Review labs and history. Consider repeating labs including CBC, Renal panel,</p>\n<p>Troponin=</p>\n<p>4.  Step 4: Circle back review telemetry. If necessary move to higher level of care.</p>\n<div class=\"drop\">\n  <button class=\"drop-btn\" type=\"button\" aria-expanded=\"false\">Non-Sustained V-Tach<span class=\"chev\">▾</span></button>\n  <div class=\"drop-panel\" hidden>\n    <p>30 seconds.</p>\n<ul>\n<ul>\n<li>Follow steps listed above and make sure to replete electrolytes</li>\n<li>Usually tolerated well until high burden</li>\n<li>Rule out MI, Hypoxia, Anemia</li>\n<li>May require EP evaluation/Structural heart disease if persistent</li>\n</ul>\n</ul>\n  </div>\n</div>\n<div class=\"drop\">\n  <button class=\"drop-btn\" type=\"button\" aria-expanded=\"false\">Sinus Tachycardia<span class=\"chev\">▾</span></button>\n  <div class=\"drop-panel\" hidden>\n    <ul>\n<ul>\n<li>Most important point is to find the cause</li>\n<li>Check for bleeding, infection, hypoxia, MI, pain</li>\n<li></li>\n</ul>\n</ul>\n<p>If patient symptomatic or unstable the rate should be controlled</p>\n<ul>\n<ul>\n<ul>\n<li>Can start with IV Metoprolol if stable</li>\n<li></li>\n</ul>\n</ul>\n</ul>\n<p>If patient is not stable more urgent rate control should be performed with Adenosine</p>\n<ul>\n<ul>\n<li>r Electrical cardioversion</li>\n<li>Note: If unstable call senior and call rapid.</li>\n</ul>\n</ul>\n  </div>\n</div>\n<div class=\"drop\">\n  <button class=\"drop-btn\" type=\"button\" aria-expanded=\"false\">Atrial Fibrillation and Atrial fibrillation with RVR<span class=\"chev\">▾</span></button>\n  <div class=\"drop-panel\" hidden>\n    <ul>\n<ul>\n<li></li>\n</ul>\n</ul>\n<p>It is important to know if patient has a history of the rhythm. Review their chart looking for</p>\n<p>past ECGs, anticoagulation etc. If new onset or new start of paroxysmal check for possible</p>\n<p>reversible causes including electrolytes, infection, bleeding. Are they due for their home</p>\n<p>dose of metoprolol?</p>\n<p>If new consider anticoagulation if not-contraindicated</p>\n<ul>\n<ul>\n<ul>\n<li></li>\n<li>Correct electrolytes, treat infection, treat hypoxia, check Hgb</li>\n<li></li>\n</ul>\n</ul>\n</ul>\n<p>If hemodynamically unstable call rapid response and prepare for electrical</p>\n<p>cardioversion</p>\n<ul>\n<ul>\n<ul>\n<li>Do not need to urgently cardiovert unless unstable this includes both chemical and</li>\n</ul>\n</ul>\n</ul>\n<p>electrical cardioversion. If considering chemical cardioversion with digoxin,</p>\n<p>diltiazem or amiodarone discuss with senior and review patient history with special</p>\n<p>attention to history of heart failure.</p>\n<ul>\n<ul>\n<li>For Atrial fib with RVR once underlying causes are ruled out can try IV metoprolol q 5</li>\n</ul>\n</ul>\n<p>minutes x 3 for rate control. If not controlling rate discuss with senior</p>\n<ul>\n<li>Bradycardia: HR &lt;50, includes sinus bradycardia and heart block</li>\n<li>General approach:</li>\n<ul>\n<li>Step 1: Place on heart monitor and get an ECG.</li>\n<ul>\n<li></li>\n</ul>\n</ul>\n</ul>\n<p>If patient is unstable or symptomatic place pads on patient bring crash cart into the</p>\n<p>room and call a rapid response.</p>\n<ul>\n<ul>\n<ul>\n<li>Once senior available can consider cutaneous pacing or Atropine (0.5 mg push</li>\n</ul>\n</ul>\n</ul>\n<p>every 3-5 minutes up to 3mg Total)</p>\n<ul>\n<ul>\n<li>Step 2: Look for reversible causes including medications, hypoxia, hypothyroidism,</li>\n</ul>\n</ul>\n<p>hypothermia and correct as able</p>\n<ul>\n<ul>\n<li>Step 3: place on telemetry and evaluate need to move to higher level of care.</li>\n<ul>\n<li>Can keep pads on patient if highly concerned and have Atropine at bedside.</li>\n</ul>\n</ul>\n</ul>\n<p>If called for bradycardia and heart block seen on ECG. Review ECG with Senior.</p>\n  </div>\n</div>\n<div class=\"drop\">\n  <button class=\"drop-btn\" type=\"button\" aria-expanded=\"false\">Heart Block<span class=\"chev\">▾</span></button>\n  <div class=\"drop-panel\" hidden>\n    <ul>\n<ul>\n<li></li>\n<li>Rule out ischemia if new</li>\n<li>1st Degree and Mobitz 1 are typically benign and can be monitored</li>\n<li>Mobitz 2 or complete heart block require pacemaker placement. In mean time have pads</li>\n<li>n patient and atropine at bedside. Consult Cardiology consider transferring to higher level</li>\n<li>f care.</li>\n</ul>\n</ul>\n  </div>\n</div>", "sources": []}, {"title": "Chest Pain", "html": "<ul>\n<li>Differential diagnosis: Acute Coronary Syndrome, Pulmonary Embolism, Aortic Dissection,</li>\n</ul>\n<p>Pneumothorax, GERD, PNA, Esophageal Spasm, Musculoskeletal</p>\n<ul>\n<li><a href=\"#\" class=\"ref-link\" data-ref=\"RationalClinicalExam-ChestPain.pdf\">Resource Link</a></li>\n</ul>\n<div class=\"drop\">\n  <button class=\"drop-btn\" type=\"button\" aria-expanded=\"false\">General Approach:<span class=\"chev\">▾</span></button>\n  <div class=\"drop-panel\" hidden>\n    <ul>\n<ul>\n<li>Step 1: Get the CURRENT vitals from the nurse. Also review patients reason for admission</li>\n</ul>\n</ul>\n<p>and if they have received any medicine yet for their chest pain.</p>\n<ul>\n<ul>\n<li>Step 2: Go see the patient. Check vitals again. Get a ECG or order it before you walk to the</li>\n</ul>\n</ul>\n<p>patients room. Ask the patient important questions (location, duration, type, radiation).</p>\n<p>Review patient medical history especially cardiac and most recent lab work</p>\n<ul>\n<ul>\n<li>Step 3: After getting story and evaluating patient consider ordering CXR, Troponin, ABG.</li>\n</ul>\n</ul>\n<p>Review ECG with senior or cards Fellow.</p>\n<ul>\n<ul>\n<ul>\n<li>Cardiac in nature or high concerning PMHx: Remember MONA (Morphine, Oxygen,</li>\n</ul>\n</ul>\n</ul>\n<p>Nitrates, Aspirin (325mg)). Sublingual Nitro can be attempted every 2-5 minutes as</p>\n<p>long as BP tolerates (Remember inferior MI). If pain unremitting and considering</p>\n<p>Nitro drip but not on appropriate floor consider Nitro Paste in the interim.</p>\n<ul>\n<ul>\n<ul>\n<li>Further Treatment: Heparin drip, Plavix, Beta blocker once discussed with senior</li>\n</ul>\n</ul>\n</ul>\n<p>and Cardiology.</p>\n<ul>\n<li>Other causes: It is important to consider other causes</li>\n<ul>\n<li>Pulmonary Embolism: can get ABG and check A-a gradient and order CTPA. Discuss with</li>\n</ul>\n</ul>\n<p>Senior and check renal function. If high enough suspicion can start Heparin drip prior to</p>\n<p>imaging or if imaging cannot be done if not contraindicated</p>\n<ul>\n<ul>\n<li>Aortic Dissection: CT chest w/contrast. First step in management is controlling HR and BP</li>\n<li>Pneumothorax/Pneumonia: Be sure to review CXR yourself. If pneumothorax call ICU and</li>\n</ul>\n</ul>\n<p>begin transfer to appropriate level of care</p>\n<ul>\n<ul>\n<li>GERD: If confident other etiologies are less likely can give patient an antacid or GI cocktail</li>\n</ul>\n</ul>\n<p>and monitor for improvement</p>\n<ul>\n<ul>\n<li>Herpes Zoster: Examine patient’s skin for characteristic rash. This can be easily missed</li>\n</ul>\n</ul>\n  </div>\n</div>", "sources": []}, {"title": "Constipation", "html": "<ul>\n<li>Overview: This is a common complaint in and out of the hospital. A bowel regimen should be</li>\n</ul>\n<p>considered in anyone in the hospital or is at risk to develop constipation. Risk factors include:</p>\n<ul>\n<ul>\n<li>Opioids and other medications</li>\n<li>Dehydration</li>\n<li>Neurologic disorders</li>\n<li></li>\n<li></li>\n</ul>\n</ul>\n<p>Immobility</p>\n<p>Infection</p>\n<div class=\"drop\">\n  <button class=\"drop-btn\" type=\"button\" aria-expanded=\"false\">General Approach:<span class=\"chev\">▾</span></button>\n  <div class=\"drop-panel\" hidden>\n    <ul>\n<ul>\n<li>Step 1: Review patient for history of constipation or use of laxatives at home. Also check for</li>\n</ul>\n</ul>\n<p>risk factors for constipation during the hospital stay and med list for medications that</p>\n<p>could be contributing to constipation</p>\n<ul>\n<ul>\n<li>Step 2: Quickly assess for alarm symptoms including blood in stool, weight loss, severe</li>\n</ul>\n</ul>\n<p>abdominal pain, sudden development of constipation. If patient has severe abdominal</p>\n<p>pain and concerning exam get KUB and exam for possible ileus or SBO.</p>\n<ul>\n<ul>\n<li>Step 3: selecting a treatment (see below)</li>\n</ul>\n</ul>\n  </div>\n</div>\n<div class=\"drop\">\n  <button class=\"drop-btn\" type=\"button\" aria-expanded=\"false\">Treatment:<span class=\"chev\">▾</span></button>\n  <div class=\"drop-panel\" hidden>\n    <ul>\n<ul>\n<li>Promote regularity: Minimize medications that could be causing constipation, correct</li>\n</ul>\n</ul>\n<p>electrolytes, and promote activity if patient able to walk halls or sit up in a chair</p>\n<ul>\n<ul>\n<li>Osmotic Laxative: initial first step. Most well studied is miralax or low dose polyethylene</li>\n</ul>\n</ul>\n<p>glycol (PEG). Well tolerated. Other options include lactulose in studies does reduce need</p>\n<p>for additional laxatives but was less effective then low dose PEG. Magnesium hydroxide</p>\n<p>should be avoided</p>\n<ul>\n<ul>\n<li>Other Treatment Options</li>\n<ul>\n<li>Colace 100mg PO BID/QID prn</li>\n<li>Tap Water Enema</li>\n<li>Soap Suds Enema</li>\n<li>Mag Citrate ½ to 1 bottle (Strong)</li>\n<li>Glycerine Suppository</li>\n<li>Dulcolax Suppository 5-10mg PO/PR QD (Strong)</li>\n</ul>\n</ul>\n</ul>\n  </div>\n</div>", "sources": []}, {"title": "Electrolyte Replacement", "html": "<ul>\n<li>Goals (Especially important in cardiology patients:</li>\n<ul>\n<li>Potassium = 4</li>\n<li>Phosphorus = 3</li>\n<li>Magnesium = 2</li>\n<li>NOTE THERE IS AN ORDER SET</li>\n</ul>\n</ul>\n<div class=\"drop\">\n  <button class=\"drop-btn\" type=\"button\" aria-expanded=\"false\">Treatment:<span class=\"chev\">▾</span></button>\n  <div class=\"drop-panel\" hidden>\n    <ul>\n<ul>\n<li>Replacing Potassium</li>\n<ul>\n<li>Give PO if able - can split 40 mEq doses q1-2h if need more than 40mEq</li>\n<li>Be cautious in replacement in patient's with CKD or AKIs</li>\n<li>Unable to give &gt;10 meq IV per hour through PIV as it is a caustic medication</li>\n<li></li>\n<li>10mEq replacement PO/IV = 0.1 change in serum potassium</li>\n</ul>\n</ul>\n</ul>\n<p>If hypomagnesemia is present as well, this must also be corrected</p>\n<ul>\n<ul>\n<li>Replacing Magnesium</li>\n<ul>\n<li>Can be given PO, may cause diarrhea</li>\n<li>500-1000 mg per dose, up to TID or IV 1-4 g per dose.</li>\n<li>Expect approximately a 0.1 increase in Mg levels for every gram given IV.</li>\n<li>The max you can give in a single IV dose is 4g if the Mg is &lt; 1.5.</li>\n<li>Replacing Phosphorus</li>\n<li>Can be given via PO or IV routes, equally effective</li>\n<li>PO dosing is 500 mg BID – TID</li>\n<li></li>\n<li>Avoid KPhos if the Potassium is high, contains 7mEq K</li>\n<li>Avoid NaPhos if hypernatremic, contains 7mEq Na</li>\n</ul>\n</ul>\n</ul>\n<p>IV dose is 10 mmol IV x 1, repeat as needed</p>\n<ul>\n<ul>\n<li>Replacing Calcium</li>\n<ul>\n<li>Remember that calcium needs to be corrected for the patient’s albumin:</li>\n<li>Ca = serum Ca + 0.8 mg/dL for every 1 g/dL of albumin &lt; 4.0</li>\n<li>Can check ionized calcium for true level independent of albumin</li>\n<li>1 gram of CaCl(13.6 mEq of elemental Ca) or 1 gram Ca gluconate (approx. 4.5 mEq</li>\n<li>f elemental Ca) are acceptable IV preparations, noting the difference in strengths.</li>\n</ul>\n</ul>\n</ul>\n  </div>\n</div>", "sources": []}, {"title": "Fever", "html": "<ul>\n<li>This is a broad topic. What do you do if you get called with a fever? Think about the following:</li>\n</ul>\n<p>Is this a new fever or old, is there a known source?</p>\n<p>Infection: Does the patient have a CXR? UA? BCx?</p>\n<ul>\n<ul>\n<li></li>\n<li></li>\n<li>Are they already being treated?</li>\n<li></li>\n</ul>\n</ul>\n<p>If patient worsening, what is not being covered by current ABx?</p>\n<ul>\n<li>Treat it with tylenol prn</li>\n<li>Note: You do not always need to get blood cultures</li>\n<li>Fever is not always infectious:</li>\n<ul>\n<li>Central fever? Thyroid? Medications? PE? NMS/Serotonin Syndrome? Rheumatologic</li>\n</ul>\n</ul>\n<p>cause? Malignancy?</p>", "sources": []}, {"title": "Pain Control", "html": "<p>Is this new pain or worsening pain or is it chronic pain?</p>\n<div class=\"drop\">\n  <button class=\"drop-btn\" type=\"button\" aria-expanded=\"false\">Assessment<span class=\"chev\">▾</span></button>\n  <div class=\"drop-panel\" hidden>\n    <ul>\n<ul>\n<li></li>\n<li>Where is the pain, what is the cause?</li>\n<li>Do I need to see this patient?</li>\n<li>What does the signout say about giving pain medications?</li>\n<li>What does the patient have as options, are they receiving opiates already? If yes, what is</li>\n</ul>\n</ul>\n<p>their tolerance?</p>\n<ul>\n<ul>\n<li>Always consider multimodal pain therapy</li>\n<li>More exhaustive guide on pain management (Linked, clin-management-post-op-pain-web-</li>\n</ul>\n</ul>\n<p>algorithm.pdf)</p>\n  </div>\n</div>\n<div class=\"drop\">\n  <button class=\"drop-btn\" type=\"button\" aria-expanded=\"false\">Treatment<span class=\"chev\">▾</span></button>\n  <div class=\"drop-panel\" hidden>\n    <ul>\n<ul>\n<li>Opiates</li>\n<ul>\n<li>Doses:</li>\n<li>Oxycodone: 2.5mg to 15mg PO doses q4-6h prn, start low with elderly</li>\n</ul>\n</ul>\n</ul>\n<p>patients</p>\n<ul>\n<ul>\n<ul>\n<li>Morphine: 2-4mg IV q4h prn</li>\n<li>Dialudid: 0.5 - 1mg IV q4h prn</li>\n<li>Onset: 15-30minutes</li>\n<li>Clearance: Renal, some hepatic</li>\n<li><a href=\"#\" class=\"ref-link\" data-ref=\"Opiate-Conversion.png\">OPIATE CONVERSION TABLE</a></li>\n<li>Tramadol</li>\n<li>Dose: 25-50mg PO q6h prn</li>\n<li>Onset: 1 hour</li>\n<li>Clearance: Renal, Hepatic</li>\n<li>Tylenol</li>\n<li>500-1,000mg PO q6h</li>\n<li>Max Dose: 4gm/day, 2gm/day in cirrhotics, avoid in acute liver injury</li>\n<li>NSAIDs</li>\n<li>Doses:</li>\n<li></li>\n</ul>\n</ul>\n</ul>\n<p>Ibuprofen: 200-800mg PO q6h prn, max 3200mg/day</p>\n<ul>\n<ul>\n<ul>\n<li>Ketorolac: 15mg IV q6h prn, limit max 5 days of treatment</li>\n<li>Cautions:</li>\n<li>Renal Dysfunction - do not use!</li>\n<li>GIB Risk - do not use!</li>\n<li>Can cause fluid retention in CHF patients</li>\n<li>Topical (These are often underutilized!!)</li>\n<li>Lidocaine Patch</li>\n<li>Capsaicin</li>\n<li>Diclofenac gel</li>\n</ul>\n</ul>\n</ul>\n  </div>\n</div>", "sources": []}, {"title": "Hyperglycemia", "html": "<div class=\"drop\">\n  <button class=\"drop-btn\" type=\"button\" aria-expanded=\"false\">Assessment<span class=\"chev\">▾</span></button>\n  <div class=\"drop-panel\" hidden>\n    <ul>\n<ul>\n<li><a href=\"#\" class=\"ref-link\" data-ref=\"NEJM2009_NICESUGAR.pdf\">How high is the sugar? Goal 140-180</a></li>\n<li>Are they symptomatic?</li>\n<li>Where have previous sugars been? What is the trend of sugars?</li>\n<li>What is their diet, are they eating, are they NPO in the am for a procedure?</li>\n<li>Last insulin dose? What kind of insulin? Avoid stacking doses.</li>\n<li></li>\n</ul>\n</ul>\n<p>Is there a precipitant? doses of insulin held, inadequate insulin dosing, sepsis,</p>\n<p>nonadherence to consistent carbohydrate diet?</p>\n  </div>\n</div>\n<div class=\"drop\">\n  <button class=\"drop-btn\" type=\"button\" aria-expanded=\"false\">Treatment<span class=\"chev\">▾</span></button>\n  <div class=\"drop-panel\" hidden>\n    <ul>\n<ul>\n<li>Look at total daily dose to evaluate insulin sensitivity</li>\n<li>Consider giving short acting or regular insulin SQ if sugars are significantly elevated, again,</li>\n</ul>\n</ul>\n<p>avoid stacking insulin</p>\n<ul>\n<ul>\n<li>Sign out to am team that patient required additional insulin and daily dosing may need to</li>\n</ul>\n</ul>\n<p>change</p>\n<ul>\n<li></li>\n</ul>\n<p><a href=\"#\" class=\"ref-link\" data-ref=\"Insulin-Pharmacokinetics.png\">Insulin Pharmacokinetics</a></p>\n  </div>\n</div>", "sources": []}, {"title": "Hypoglycemia", "html": "<ul>\n<li>Assess symptoms (mental status is most important)</li>\n<li></li>\n</ul>\n<p>Is hypogycemic protocol ordered?</p>\n<ul>\n<ul>\n<li></li>\n<li></li>\n<li></li>\n</ul>\n</ul>\n<p>If able to take PO, give 4 ounces of juice</p>\n<p>If unable to take PO, give 1 amp of D50 IV</p>\n<p>If symptomatic and no IV access, give glucagon 1.0 mg SQ or IM</p>\n<ul>\n<li>Why are they hypoglycemic?</li>\n<ul>\n<li>NPO, insulin dosing too high, sepsis, decreased PO intake, renal insufficiency, reactive</li>\n</ul>\n</ul>\n<p>post-prandial, EtOH, liver disease, adrenal insufficiency, hypopituitarism, adrenal</p>\n<p>insufficiency, severe malnutrition?</p>\n<ul>\n<li>Do you need to start D5 or D10 drip? (D20 or higher must be given through central access)</li>\n</ul>", "sources": []}, {"title": "Hyperkalemia", "html": "<div class=\"drop\">\n  <button class=\"drop-btn\" type=\"button\" aria-expanded=\"false\">Assessment<span class=\"chev\">▾</span></button>\n  <div class=\"drop-panel\" hidden>\n    <ul>\n<ul>\n<li></li>\n<li>Does the lab make sense? Is there a reason for hyperkalemia? If not obvious, recheck.</li>\n<li></li>\n</ul>\n</ul>\n<p>Is the specimen hemolyzed?</p>\n<p>If real, STAT EKG</p>\n<ul>\n<ul>\n<ul>\n<li>Peaked T-waves with shortened QT interval</li>\n<li>Lengthening of the PR interval and QRS duration</li>\n<li>P wave disappear</li>\n<li>Management (HYPERKALEMIA ORDERSET)</li>\n<li>Calcium gluconate: 1gm over 2-3 minutes for cardiac protection. Recheck EKG 30 minutes</li>\n</ul>\n</ul>\n</ul>\n<p>later, do EKG changes persist?</p>\n<p>Insulin: 10 units IV regular insulin with D50 1 amp (consider dose decrease if AKI)</p>\n<ul>\n<ul>\n<li></li>\n<li>Kayexalate: 15-45 grams PO or as enema</li>\n<li>Does this patient need dialysis</li>\n<li></li>\n</ul>\n</ul>\n<p>Identify causes: renal insufficiency, medications, acidosis, type 4 RTA, tissue destruction</p>\n<p>(i.e. rhabdo, tissue infarction, hemolysis)</p>\n  </div>\n</div>", "sources": []}, {"title": "Hypertension", "html": "<ul>\n<li>Definitions:</li>\n<ul>\n<li>HTN Urgency: SBP &gt;180 or DBP &gt;120 without symptoms or end-organ damage</li>\n<li>HTN Emergency: Elevated BP with signs of acute end-organ damage</li>\n<ul>\n<li>End-organ damage: headache, vision change, papilledema, mental status change,</li>\n</ul>\n</ul>\n</ul>\n<p>chest pain, EKG changes, shortness of breath, pulmonary edema on CXR, and acute</p>\n<p>elevation of Cr on BM</p>\n<div class=\"drop\">\n  <button class=\"drop-btn\" type=\"button\" aria-expanded=\"false\">Assessment:<span class=\"chev\">▾</span></button>\n  <div class=\"drop-panel\" hidden>\n    <ul>\n<ul>\n<li></li>\n<li></li>\n<li>Etiology: Related to pain? Anxiety or agitation? Cerebral injury? Progression of essential</li>\n</ul>\n</ul>\n<p>Is the patient symptomatic?</p>\n<p>Is this acute or chronic?</p>\n<p>HTN? Autonomic dysfunction?</p>\n  </div>\n</div>\n<div class=\"drop\">\n  <button class=\"drop-btn\" type=\"button\" aria-expanded=\"false\">General Approach<span class=\"chev\">▾</span></button>\n  <div class=\"drop-panel\" hidden>\n    <ul>\n<ul>\n<li>Review BP trend in chart</li>\n<li>Review I/O in chart</li>\n<li>Review Med-Rec and MAR to see if anti-HTN therapy was missed</li>\n<li>Go see the patient and perform cardiac, pulm, and neuro exam</li>\n<li>Ask MA or RN to check bilateral manual BP with appropriately sized cuff</li>\n<li>Check EKG, BMP, CXR, and CT head as indicated based on clinical context, symptoms, and</li>\n</ul>\n</ul>\n<p>exam</p>\n  </div>\n</div>\n<div class=\"drop\">\n  <button class=\"drop-btn\" type=\"button\" aria-expanded=\"false\">Treatment<span class=\"chev\">▾</span></button>\n  <div class=\"drop-panel\" hidden>\n    <ul>\n<ul>\n<li>HTN Urgency: decrease BP in hours with PO agents</li>\n<li>HTN Emergency: decrease MAP by 25% within min to 2 hours with IV agents</li>\n<li>Uncontrolled HTN:</li>\n<ul>\n<li></li>\n<li></li>\n<li></li>\n</ul>\n</ul>\n</ul>\n<p>If pre-existing HTN, then consider restarting home anti-HTN meds +/- intensify dose</p>\n<p>If new diagnosis of HTN, then initiate therapy based on pt demographics and co-</p>\n<p>existing conditions (DM, CKD, HF, ischemic heart disease, etc). In general, thiazide,</p>\n<p>CCB, or ACEi</p>\n<p>If due to pain, nausea, anxiety, or agitation, then address accordingly</p>\n<ul>\n<ul>\n<li>HTNsive Emergency (IV agents):</li>\n<ul>\n<li>Nicardipine: Use for AKI; Contraindicated (CI) in advanced aortic stenosis</li>\n<li>Nitroprusside: Use in HTN Encephalopathy; Tachyphylaxis and cyanide poisoning</li>\n</ul>\n</ul>\n</ul>\n<p>with extended use</p>\n<ul>\n<ul>\n<ul>\n<li>Nitroglycerin: Use in cardiac ischemia and pulmonary edema; Do NOT use if pt is</li>\n</ul>\n</ul>\n</ul>\n<p>taking PDE-5 inhibitor</p>\n<ul>\n<ul>\n<ul>\n<li>Labetalol and esmolol: Use in CVA, aortic dissection, and ACS; Do NOT use if</li>\n</ul>\n</ul>\n</ul>\n<p>bradycardia or 2nd or 3rd degree block; May worsen HF. Do NOT use if HTNsive</p>\n<p>emergency with pulmonary edema as this is acute decompensated CHF. Labetalol</p>\n<p>is CI in asthma and COPD</p>\n<ul>\n<ul>\n<ul>\n<li>Hydralazine: NOT first line due to unpredictable response with IV and prolonged</li>\n</ul>\n</ul>\n</ul>\n<p>duration (2-4 h), causes rebound tachycardia</p>\n  </div>\n</div>", "sources": []}, {"title": "Hypotension", "html": "<ul>\n<li>Note: Always notify your senior resident when you are called for any hypotensive event.</li>\n<li>Definitions:</li>\n<ul>\n<li>Relative Hypotension: drop in SBP &gt; 40 mmHg</li>\n<li>Absolute Hypotension: SBP &lt; 90 or MAP &lt; 65</li>\n<li>Shock: state of insufficient perfusion and oxygen delivery to tissues</li>\n<li>What to consider:</li>\n<li>This is urgent and takes top priority</li>\n<li></li>\n<li></li>\n<li>Other etiologies of shock: distributive, hypovolemic, cardiogenic, obstructive</li>\n</ul>\n</ul>\n<p>Is hypotension associated with signs of decreased tissue perfusion?</p>\n<p>Is this sepsis (qSOFA (+) or SIRS (+) with suspected source)?</p>\n<ul>\n<li>SIRS Criteria (2 of 4)</li>\n<ul>\n<li>Temp &gt; 38 or &lt; 36 C</li>\n<li>HR &gt; 90</li>\n<li>RR &gt; 20 or PaCO2 &lt; 32</li>\n<li>WBC &gt;12, &lt;4, data-preserve-html-node=\"true\" data-preserve-html-node=\"true\" data</li>\n</ul>\n</ul>\n<p>preserve-html-node=\"true\" data-preserve-html-node=\"true\" data-preserve-html-</p>\n<p>node=\"true\" or &gt;10% bands)</p>\n<ul>\n<li>qSOFA Criteria (2 of 3)</li>\n<ul>\n<li>SBP ≤ 100 mmHg</li>\n<li>RR &lt; 22</li>\n<li>AMS (GCS &lt; 15)</li>\n</ul>\n</ul>\n<div class=\"drop\">\n  <button class=\"drop-btn\" type=\"button\" aria-expanded=\"false\">Assessment:<span class=\"chev\">▾</span></button>\n  <div class=\"drop-panel\" hidden>\n    <ul>\n<ul>\n<li>Tell the senior immediately</li>\n<li>Go see the patient</li>\n<li></li>\n</ul>\n</ul>\n  </div>\n</div>\n<p>If concerned for shock and etiology is undifferentiated, then check the following:</p>\n<ul>\n<ul>\n<ul>\n<li>Lactate, CMP, troponin, BNP, CBC with diff, PT/INR, VBG, cortisol</li>\n<li>EKG</li>\n<li>CXR</li>\n</ul>\n</ul>\n</ul>\n<div class=\"drop\">\n  <button class=\"drop-btn\" type=\"button\" aria-expanded=\"false\">Treatment:<span class=\"chev\">▾</span></button>\n  <div class=\"drop-panel\" hidden>\n    <ul>\n<ul>\n<li>Volume resuscitation. Be cautious if there is cardiac dysfunction. Check last known LVEF.</li>\n<li></li>\n</ul>\n</ul>\n<p>If persistent, rapid or discuss with MICU fellow for upgaded level of care</p>\n  </div>\n</div>", "sources": []}, {"title": "Insomnia", "html": "<ul>\n<ul>\n<li>Melatonin 3mg PO QHS</li>\n<li>Benadryl 25-50mg PO qhs prn (Don’t use in BPH)</li>\n<li></li>\n</ul>\n</ul>\n<p>Is patient appropriate for sleep bundle?</p>", "sources": []}, {"title": "Shortness of Breath", "html": "<ul>\n<ul>\n<li>Note: Always notify your senior resident when you are called for any acute respiratory event. If</li>\n</ul>\n</ul>\n<p>you need additional support (RN, respiratory, AOD), do not hesitate to call a rapid response.</p>\n<div class=\"drop\">\n  <button class=\"drop-btn\" type=\"button\" aria-expanded=\"false\">General Approach:<span class=\"chev\">▾</span></button>\n  <div class=\"drop-panel\" hidden>\n    \n  </div>\n</div>\n<ul>\n<ul>\n<li>Determine urgency:</li>\n<ul>\n<li>Vitals, NC &gt; 6L is not appropriate for floor if new this admission</li>\n<li>Triage seeing a hypoxic patient as a #1 above other tasks.</li>\n</ul>\n</ul>\n</ul>\n<div class=\"drop\">\n  <button class=\"drop-btn\" type=\"button\" aria-expanded=\"false\">Assessment:<span class=\"chev\">▾</span></button>\n  <div class=\"drop-panel\" hidden>\n    <ul>\n<ul>\n<li>See patient</li>\n<li>Review signout and most recent progress note</li>\n<li>Review meds – can give clues to what is going on (COPD inhalers? Fluids? CHF meds?)</li>\n<li>Review most recent labs (history of hypercapnia? troponin elevation? elevated NT</li>\n</ul>\n</ul>\n<p>proBNP?)</p>\n<ul>\n<ul>\n<li>Perform exam and order diagnostic testing (see below)</li>\n<li>Cardiopulmonary examination</li>\n<li>General: Awake or drowsy? Rash suspicious for anaphylaxis?</li>\n<li>HEENT: Evidence of angioedema?</li>\n<li>Pulmonary: Working of breathing? Speaking in full sentences? Crackles? Wheezing?</li>\n<li>Cardiac: Regular rhythm? Edema? JVD?</li>\n<li>Review continuous pulse oximetry to confirm good wave form (good “pleth”)</li>\n<li>Differential and diagnostic testing</li>\n<li>Cardiovascular: acute coronary syndrome, heart failure, tamponade, hypertensive</li>\n</ul>\n</ul>\n<p>emergency</p>\n<ul>\n<ul>\n<li>Pulmonary: Pulmonary embolism, pneumothorax, pneumonia, asthma/COPD, airway</li>\n<li>bstruction (foreign body? angioedema? anaphylaxis?)</li>\n<li>Other: acute blood loss, acute chest syndrome, diabetic ketoacidosis</li>\n</ul>\n</ul>\n  </div>\n</div>\n<ul>\n<ul>\n<li>Determine DISPO:</li>\n<li>Can patient stay on floor? --&gt; New bipap and O2 &gt;6L from baseline must go to stepdown</li>\n<li></li>\n</ul>\n</ul>\n<p>level of care.</p>\n<p>If patient is remaining on the floor, strongly consider telemetry monitoring and continuous</p>\n<p>pulse oximetry if not already implemented</p>", "sources": []}];
+
+/**
+ * NOTE:
+ * Your SECTIONS array is large. Keep your existing SECTIONS constant as-is.
+ * Paste your current SECTIONS here unchanged.
+ */
+const SECTIONS = (typeof window !== "undefined" && window.SECTIONS) ? window.SECTIONS : ([
+  // --- KEEP YOUR EXISTING SECTIONS HERE ---
+]);
 
 const els = {
   homeControls: document.getElementById("home-controls"),
@@ -23,7 +32,7 @@ const els = {
 };
 
 let currentSectionIndex = null;
-let navStack = []; // push view states for back navigation
+let navStack = [];
 
 function escapeHtml(str) {
   return String(str)
@@ -31,6 +40,8 @@ function escapeHtml(str) {
     .replaceAll("<", "&lt;")
     .replaceAll(">", "&gt;");
 }
+
+/* ---------- NAV ---------- */
 
 function showHome(pushState = true) {
   if (pushState) navStack = [];
@@ -59,7 +70,12 @@ function showSection(index, pushState = true) {
 
   els.sectionTitle.textContent = section.title;
   els.sectionMeta.textContent = "";
+
+  // Render HTML
   els.sectionContent.innerHTML = section.html || "";
+
+  // FIX #1: Normalize / repair the DOM structure (lists, bullets, continuations, tables)
+  postProcessSectionDom(els.sectionContent);
 
   // Append Sources (if any) to bottom of page
   if (Array.isArray(section.sources) && section.sources.length) {
@@ -69,12 +85,14 @@ function showSection(index, pushState = true) {
       .join("");
     const wrap = document.createElement("div");
     wrap.className = "sources";
-    wrap.innerHTML = `<h3>Sources</h3><ul>${sourcesHtml}</ul>`;
+    wrap.innerHTML = `<h3>Sources</h3><ul class="clinical-list level-1">${sourcesHtml}</ul>`;
     els.sectionContent.appendChild(wrap);
   }
 
   wireDropdowns(els.sectionContent);
   wireReferenceLinks(els.sectionContent);
+
+  window.scrollTo({ top: 0, left: 0, behavior: "instant" });
 }
 
 function showReference(filename, pushState = true) {
@@ -94,6 +112,8 @@ function showReference(filename, pushState = true) {
 
   // Same-folder reference lookup
   els.refFrame.src = filename;
+
+  window.scrollTo({ top: 0, left: 0, behavior: "instant" });
 }
 
 function goBack() {
@@ -113,6 +133,8 @@ function goBack() {
   showHome(false);
 }
 
+/* ---------- HOME ---------- */
+
 function renderHome(filterText) {
   const q = (filterText || "").trim().toLowerCase();
   const matches = SECTIONS
@@ -131,9 +153,11 @@ function renderHome(filterText) {
     </div>
   `).join("");
 
-  els.homeView.innerHTML = `<div class="section-list">${cards}</div>`;
+  els.homeView.innerHTML = `
+    <h2 class="card-title">Sections</h2>
+    <div class="section-list">${cards}</div>
+  `;
 
-  // click/keyboard handlers
   els.homeView.querySelectorAll(".section-card").forEach(card => {
     const open = () => showSection(Number(card.dataset.index), true);
     card.addEventListener("click", open);
@@ -145,6 +169,8 @@ function renderHome(filterText) {
     });
   });
 }
+
+/* ---------- DROPDOWNS + LINKS ---------- */
 
 function wireDropdowns(root) {
   root.querySelectorAll(".drop-btn").forEach(btn => {
@@ -167,6 +193,121 @@ function wireReferenceLinks(root) {
     });
   });
 }
+
+/* ---------- FIXES: PDF LIST STRUCTURE NORMALIZATION ---------- */
+
+/**
+ * Repairs common PDF-to-HTML list problems:
+ * 1) Nested <ul> appearing as siblings of <li> (invalid) → moves <ul> into preceding <li>
+ * 2) Empty <li> bullets → removes/hides
+ * 3) Orphan <p> lines that should be continuation of prior bullet → moves into last <li>
+ * 4) Wrap tables in .table-wrap to prevent overflow
+ * 5) Applies .clinical-list + level-* classes to all lists for consistent indenting/bullets
+ */
+function postProcessSectionDom(root) {
+  if (!root) return;
+
+  // 4) Wrap tables
+  root.querySelectorAll("table").forEach(t => {
+    if (t.parentElement && t.parentElement.classList.contains("table-wrap")) return;
+    const wrap = document.createElement("div");
+    wrap.className = "table-wrap";
+    t.parentNode.insertBefore(wrap, t);
+    wrap.appendChild(t);
+  });
+
+  // 1) Fix invalid structure: <ul> directly inside <ul> (should be within a <li>)
+  // Repeat a couple passes because moving nodes changes structure.
+  for (let pass = 0; pass < 3; pass++) {
+    root.querySelectorAll("ul").forEach(ul => {
+      const children = Array.from(ul.children);
+      children.forEach((child, idx) => {
+        if (child.tagName === "UL") {
+          // find previous LI to attach to
+          const prev = findPreviousElementSiblingOfType(child, "LI");
+          if (prev) {
+            prev.appendChild(child);
+          } else {
+            // No previous LI exists; create one so bullet alignment doesn't break
+            const li = document.createElement("li");
+            li.className = "is-empty";
+            ul.insertBefore(li, child);
+            li.appendChild(child);
+          }
+        }
+      });
+    });
+  }
+
+  // 2) Mark empty <li> so CSS can hide them (and removes truly empty ones)
+  root.querySelectorAll("li").forEach(li => {
+    const text = (li.textContent || "").replace(/\s+/g, " ").trim();
+    const hasMeaningfulChild = Array.from(li.children).some(ch => ch.tagName !== "UL" && ch.tagName !== "OL");
+    const hasListChild = li.querySelector("ul,ol");
+    if (!text && !hasMeaningfulChild && !hasListChild) {
+      li.classList.add("is-empty");
+    }
+  });
+
+  // 3) Pull orphan paragraphs into the last bullet when they look like continuations
+  // Pattern in your screenshot: a <p> after a <ul> that should continue last <li>.
+  Array.from(root.querySelectorAll("p")).forEach(p => {
+    const prev = p.previousElementSibling;
+    if (!prev) return;
+
+    // If paragraph follows a UL, treat as continuation of last bullet if any.
+    if (prev.tagName === "UL") {
+      const lastLi = prev.querySelector("li:last-child");
+      if (lastLi) {
+        const cont = document.createElement("div");
+        cont.className = "li-cont";
+        cont.textContent = (p.textContent || "").trim();
+        if (cont.textContent) lastLi.appendChild(cont);
+        p.remove();
+      }
+    }
+  });
+
+  // 5) Apply list classes + bullet styles by depth
+  applyClinicalListClasses(root);
+}
+
+function findPreviousElementSiblingOfType(node, tagName) {
+  let cur = node.previousElementSibling;
+  while (cur) {
+    if (cur.tagName === tagName) return cur;
+    cur = cur.previousElementSibling;
+  }
+  return null;
+}
+
+function applyClinicalListClasses(root) {
+  const lists = root.querySelectorAll("ul");
+  lists.forEach(ul => {
+    // skip nav/home or other UI lists (none expected, but safe)
+    if (ul.closest(".section-list")) return;
+
+    ul.classList.add("clinical-list");
+
+    const depth = countListDepth(ul);
+    if (depth >= 3) ul.classList.add("level-3");
+    else if (depth === 2) ul.classList.add("level-2");
+    else ul.classList.add("level-1");
+  });
+}
+
+function countListDepth(ul) {
+  // depth = number of ancestor ULs + 1
+  let depth = 1;
+  let p = ul.parentElement;
+  while (p) {
+    if (p.tagName === "UL") depth++;
+    p = p.parentElement;
+  }
+  return depth;
+}
+
+/* ---------- INIT ---------- */
 
 function init() {
   document.title = APP_TITLE;
@@ -191,4 +332,4 @@ function init() {
   showHome(true);
 }
 
-init();
+document.addEventListener("DOMContentLoaded", init);

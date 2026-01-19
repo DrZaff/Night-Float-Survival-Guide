@@ -59,19 +59,6 @@ a:hover{text-decoration:underline}
   font-size:.95rem;
 }
 
-.app-badge{
-  display:inline-flex;
-  align-items:center;
-  gap:.4rem;
-  padding:.35rem .7rem;
-  border:1px solid var(--color-border-subtle);
-  border-radius:999px;
-  background:rgba(22,242,154,.06);
-  color:var(--color-text-accent);
-  font-weight:600;
-  font-size:.8rem;
-}
-
 .app-main{
   display:flex;
   flex-direction:column;
@@ -209,12 +196,14 @@ a:hover{text-decoration:underline}
   color:var(--color-text-primary);
   line-height:1.45;
 }
+
+/* IMPORTANT: stop overriding UL padding to 0 (this broke bullet alignment) */
 .section-content ul{
-  margin:.45rem 0 .6rem 1.1rem;
+  margin:0;
   padding:0;
 }
 .section-content li{
-  margin:.25rem 0;
+  margin:0;
   color:var(--color-text-primary);
   line-height:1.42;
 }
@@ -257,15 +246,14 @@ th{
   select,
   textarea,
   .field-input {
-    font-size: 16px !important; /* Prevent iOS Safari zoom */
+    font-size: 16px !important;
   }
 }
 
-/* Remove number spinners (in case future inputs added) */
+/* Remove number spinners */
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; margin:0; }
 input[type=number]{ -moz-appearance:textfield; }
-
 
 /* Header icon */
 .header-icon-btn{
@@ -316,7 +304,7 @@ input[type=number]{ -moz-appearance:textfield; }
 }
 .drop-btn[aria-expanded="true"] .chev{transform:rotate(180deg)}
 .drop-panel{
-  padding:.1rem .9rem .85rem;
+  padding:.35rem .9rem .85rem;
   border-top:1px solid var(--color-border-subtle);
 }
 
@@ -353,3 +341,36 @@ input[type=number]{ -moz-appearance:textfield; }
   color:var(--color-text-secondary);
 }
 .sources li{color:var(--color-text-secondary)}
+
+/* ===== Clinical List System (FIXED INDENTATION + BULLET ALIGNMENT) ===== */
+
+.clinical-list{
+  margin:.45rem 0 .65rem;
+  padding-left:1.25rem;
+  list-style-position:outside; /* key: wrapped text aligns under text */
+}
+
+.clinical-list.level-1{ padding-left:1.25rem; list-style-type:disc; }
+.clinical-list.level-2{ padding-left:1.55rem; list-style-type:circle; margin-top:.25rem; }
+.clinical-list.level-3{ padding-left:1.85rem; list-style-type:square; }
+
+.clinical-list > li{
+  margin:.28rem 0;
+  line-height:1.45;
+}
+
+/* Hide empty bullets that slip through */
+.clinical-list li.is-empty{
+  display:none !important;
+}
+
+/* Continuation text that gets pulled into previous bullet */
+.li-cont{
+  margin-top:.25rem;
+  color:var(--color-text-primary);
+}
+
+/* Make lists inside dropdowns look identical */
+.drop-panel .clinical-list{
+  margin:.35rem 0 .55rem;
+}
