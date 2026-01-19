@@ -374,3 +374,30 @@ input[type=number]{ -moz-appearance:textfield; }
 .drop-panel .clinical-list{
   margin:.35rem 0 .55rem;
 }
+
+/* ===== Clinical List System (Indentation + Bullet Alignment Fix) ===== */
+/* PDF-derived content requires proper UL padding and list-style outside so wrapped lines align under text */
+.section-content ul.clinical-list{
+  margin: .45rem 0 .65rem;
+  padding-left: 1.25rem; /* overrides .section-content ul padding:0 */
+  list-style-position: outside;
+}
+
+.section-content ul.clinical-list.level-1{ list-style-type: disc; padding-left: 1.25rem; }
+.section-content ul.clinical-list.level-2{ list-style-type: circle; padding-left: 1.55rem; margin-top: .25rem; }
+.section-content ul.clinical-list.level-3{ list-style-type: square; padding-left: 1.85rem; }
+
+.section-content ul.clinical-list > li{
+  margin: .28rem 0;
+  line-height: 1.45;
+}
+
+/* Hide empty bullets produced by PDF conversion */
+.section-content li.is-empty{ display:none !important; }
+
+/* Continuation lines merged into prior bullet */
+.section-content .li-cont{
+  margin-top: .25rem;
+  line-height: 1.45;
+}
+

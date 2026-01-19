@@ -1,17 +1,8 @@
-// UC Night Float Survival Guide
+// UC Night Float Survival Guide (updated from Content-File.pdf)
 // Offline-capable sections with in-app reference viewer.
-// FIX: post-process section HTML to repair list nesting + indentation.
 
 const APP_TITLE = "UC Night Float Survival Guide";
-
-/**
- * NOTE:
- * Your SECTIONS array is large. Keep your existing SECTIONS constant as-is.
- * Paste your current SECTIONS here unchanged.
- */
-const SECTIONS = (typeof window !== "undefined" && window.SECTIONS) ? window.SECTIONS : ([
-  // --- KEEP YOUR EXISTING SECTIONS HERE ---
-]);
+const SECTIONS = [{"title": "Antiemetics", "html": "<ul>\n<li>Co...pulse oximetry if not already implemented</p>", "sources": []}];
 
 const els = {
   homeControls: document.getElementById("home-controls"),
@@ -74,7 +65,7 @@ function showSection(index, pushState = true) {
   // Render HTML
   els.sectionContent.innerHTML = section.html || "";
 
-  // FIX #1: Normalize / repair the DOM structure (lists, bullets, continuations, tables)
+  // ✅ FIX: Normalize PDF-derived HTML so bullets/indentation match the source
   postProcessSectionDom(els.sectionContent);
 
   // Append Sources (if any) to bottom of page
@@ -136,10 +127,17 @@ function goBack() {
 /* ---------- HOME ---------- */
 
 function renderHome(filterText) {
+  // ✅ Guard: if SECTIONS isn't loaded, show an explicit error instead of “missing home”
+  if (!Array.isArray(SECTIONS) || SECTIONS.length === 0) {
+    els.homeView.innerHTML =
+      `<p class="section-empty">No sections loaded. Ensure <code>script.js</code> contains <code>const SECTIONS = [...]</code> and that the deployed file matches your local version.</p>`;
+    return;
+  }
+
   const q = (filterText || "").trim().toLowerCase();
   const matches = SECTIONS
     .map((s, idx) => ({ ...s, idx }))
-    .filter(s => !q || s.title.toLowerCase().includes(q));
+    .filter(s => !q || String(s.title || "").toLowerCase().includes(q));
 
   if (!matches.length) {
     els.homeView.innerHTML = `<p class="section-empty">No matches. Try a different search.</p>`;
@@ -195,7 +193,6 @@ function wireReferenceLinks(root) {
 }
 
 /* ---------- FIXES: PDF LIST STRUCTURE NORMALIZATION ---------- */
-
 /**
  * Repairs common PDF-to-HTML list problems:
  * 1) Nested <ul> appearing as siblings of <li> (invalid) → moves <ul> into preceding <li>
@@ -207,8 +204,8 @@ function wireReferenceLinks(root) {
 function postProcessSectionDom(root) {
   if (!root) return;
 
-  // 4) Wrap tables
-  root.querySelectorAll("table").forEach(t => {
+  // Wrap tables
+  root.querySelectorAll("table").forEach((t) => {
     if (t.parentElement && t.parentElement.classList.contains("table-wrap")) return;
     const wrap = document.createElement("div");
     wrap.className = "table-wrap";
@@ -216,19 +213,15 @@ function postProcessSectionDom(root) {
     wrap.appendChild(t);
   });
 
-  // 1) Fix invalid structure: <ul> directly inside <ul> (should be within a <li>)
-  // Repeat a couple passes because moving nodes changes structure.
+  // Fix invalid structure: <ul> directly inside <ul> (must be inside <li>)
   for (let pass = 0; pass < 3; pass++) {
-    root.querySelectorAll("ul").forEach(ul => {
-      const children = Array.from(ul.children);
-      children.forEach((child, idx) => {
+    root.querySelectorAll("ul").forEach((ul) => {
+      Array.from(ul.children).forEach((child) => {
         if (child.tagName === "UL") {
-          // find previous LI to attach to
-          const prev = findPreviousElementSiblingOfType(child, "LI");
-          if (prev) {
-            prev.appendChild(child);
+          const prevLi = findPreviousElementSiblingOfType(child, "LI");
+          if (prevLi) {
+            prevLi.appendChild(child);
           } else {
-            // No previous LI exists; create one so bullet alignment doesn't break
             const li = document.createElement("li");
             li.className = "is-empty";
             ul.insertBefore(li, child);
@@ -239,36 +232,36 @@ function postProcessSectionDom(root) {
     });
   }
 
-  // 2) Mark empty <li> so CSS can hide them (and removes truly empty ones)
-  root.querySelectorAll("li").forEach(li => {
+  // Hide empty bullets
+  root.querySelectorAll("li").forEach((li) => {
     const text = (li.textContent || "").replace(/\s+/g, " ").trim();
-    const hasMeaningfulChild = Array.from(li.children).some(ch => ch.tagName !== "UL" && ch.tagName !== "OL");
-    const hasListChild = li.querySelector("ul,ol");
-    if (!text && !hasMeaningfulChild && !hasListChild) {
-      li.classList.add("is-empty");
-    }
+    const hasNonListChild = Array.from(li.children).some(
+      (ch) => ch.tagName !== "UL" && ch.tagName !== "OL"
+    );
+    const hasListChild = !!li.querySelector(":scope > ul, :scope > ol");
+    if (!text && !hasNonListChild && !hasListChild) li.classList.add("is-empty");
   });
 
-  // 3) Pull orphan paragraphs into the last bullet when they look like continuations
-  // Pattern in your screenshot: a <p> after a <ul> that should continue last <li>.
-  Array.from(root.querySelectorAll("p")).forEach(p => {
+  // Pull orphan paragraphs into last bullet when they likely continue it
+  Array.from(root.querySelectorAll("p")).forEach((p) => {
     const prev = p.previousElementSibling;
     if (!prev) return;
 
-    // If paragraph follows a UL, treat as continuation of last bullet if any.
     if (prev.tagName === "UL") {
       const lastLi = prev.querySelector("li:last-child");
       if (lastLi) {
-        const cont = document.createElement("div");
-        cont.className = "li-cont";
-        cont.textContent = (p.textContent || "").trim();
-        if (cont.textContent) lastLi.appendChild(cont);
-        p.remove();
+        const contText = (p.textContent || "").trim();
+        if (contText) {
+          const cont = document.createElement("div");
+          cont.className = "li-cont";
+          cont.textContent = contText;
+          lastLi.appendChild(cont);
+          p.remove();
+        }
       }
     }
   });
 
-  // 5) Apply list classes + bullet styles by depth
   applyClinicalListClasses(root);
 }
 
@@ -282,11 +275,8 @@ function findPreviousElementSiblingOfType(node, tagName) {
 }
 
 function applyClinicalListClasses(root) {
-  const lists = root.querySelectorAll("ul");
-  lists.forEach(ul => {
-    // skip nav/home or other UI lists (none expected, but safe)
+  root.querySelectorAll("ul").forEach((ul) => {
     if (ul.closest(".section-list")) return;
-
     ul.classList.add("clinical-list");
 
     const depth = countListDepth(ul);
@@ -297,7 +287,6 @@ function applyClinicalListClasses(root) {
 }
 
 function countListDepth(ul) {
-  // depth = number of ancestor ULs + 1
   let depth = 1;
   let p = ul.parentElement;
   while (p) {
@@ -321,7 +310,7 @@ function init() {
     if (e.key !== "Enter") return;
     const q = (els.searchInput.value || "").trim().toLowerCase();
     if (!q) return;
-    const hit = SECTIONS.findIndex(s => s.title.toLowerCase().includes(q));
+    const hit = SECTIONS.findIndex(s => String(s.title || "").toLowerCase().includes(q));
     if (hit >= 0) showSection(hit, true);
   });
 
