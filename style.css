@@ -250,35 +250,35 @@ a:hover{text-decoration:underline}
   box-shadow:0 10px 25px rgba(0,0,0,0.45);
 }
 
-/* ===== Dropdowns (now details/summary, not button) ===== */
+/* ===== Dropdowns (details/summary) — slimmed down ===== */
 
 .drop{
-  margin:.7rem 0;
+  margin:.55rem 0; /* slightly tighter */
   border:1px solid var(--color-border-subtle);
   background:rgba(255,255,255,.02);
   border-radius:14px;
   overflow:hidden;
 }
 
-/* summary styled like your prior drop button, but behaves like a dropdown */
 .drop-summary{
-  list-style:none; /* remove default marker space */
+  list-style:none;
   width:100%;
   display:flex;
-  align-items:center;
+  align-items:flex-start; /* less “button-y” */
   justify-content:space-between;
-  gap:.75rem;
-  padding:.75rem .9rem;
+  gap:.6rem;
+  padding:.55rem .75rem;   /* slimmer */
   color:var(--color-text-primary);
   cursor:pointer;
-  font-weight:800;
-  letter-spacing:.2px;
+  font-weight:650;         /* less bulky than 800 */
+  letter-spacing:0.1px;
+  font-size:.95rem;
+  line-height:1.25;
   -webkit-tap-highlight-color:transparent;
 }
-.drop-summary:hover{background:rgba(22,242,154,.04)}
+.drop-summary:hover{background:rgba(22,242,154,.035)}
 .drop-summary:active{background:rgba(255,255,255,.03)}
 
-/* remove the native triangle marker */
 .drop-summary::-webkit-details-marker{display:none}
 .drop-summary::marker{content:""}
 
@@ -290,22 +290,19 @@ a:hover{text-decoration:underline}
 .drop .chev{
   color:var(--color-text-muted);
   font-weight:900;
+  font-size:.9rem;         /* smaller chevron */
+  line-height:1;
+  padding-top:.1rem;
   transition:transform .14s ease;
 }
-
 .drop[open] .chev{transform:rotate(180deg)}
 
 .drop-panel{
-  padding:.35rem .9rem .85rem;
+  padding:.35rem .75rem .75rem; /* slimmer */
   border-top:1px solid var(--color-border-subtle);
 }
 
-/* If a primary bullet had no body, hide empty panel spacing */
-.drop-panel[data-empty="true"]{
-  display:none;
-}
-
-/* ===== Clinical List System (indentation + wrapped alignment) ===== */
+/* ===== Clinical List System ===== */
 .clinical-list{
   margin:.45rem 0 .65rem;
   padding-left:1.25rem;
@@ -329,7 +326,6 @@ a:hover{text-decoration:underline}
   color:var(--color-text-primary);
 }
 
-/* Make lists inside dropdowns look identical */
 .drop-panel .clinical-list{
   margin:.35rem 0 .55rem;
 }
