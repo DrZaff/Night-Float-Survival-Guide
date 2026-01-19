@@ -7,6 +7,34 @@
 
 const APP_TITLE = "UC Night Float Survival Guide";
 
+// Sections where we DO NOT create any dropdowns (explicit user rules)
+const NO_DROPDOWNS_SECTIONS = new Set([
+  "Antiemetics",
+  "Adults with Medical Complexity",
+  "Altered Mental Status",
+]);
+
+// Explicit "never dropdown" labels (even if they contain nested lists)
+const NEVER_DROPDOWN_LABELS = new Set([
+  "notes:",
+  "note:",
+]);
+
+// Dropdown triggers (case-insensitive) — ONLY if bullet content exists below
+const KEYWORD_DROPDOWN_TRIGGERS = [
+  "general approach",
+  "assessment",
+  "treatment",
+];
+
+// Arrhythmias-specific dropdown headings (applied only within Arrhythmias section)
+const ARRHYTHMIA_DROPDOWNS = [
+  "non-sustained v-tach",
+  "sinus tachycardia",
+  "atrial fibrillation and atrial fibrillation with rvr",
+  "heart block",
+];
+
 const SECTIONS = [
   {
     "title": "Antiemetics",
@@ -20,7 +48,7 @@ const SECTIONS = [
   },
   {
     "title": "Adults with Medical Complexity",
-    "html": "<ul class=\"clinical-list level-1\">\n<li>Adults with medical complexity typically have complex, chronic medical conditions associated with use of medical technology and increased need for care coordination.</li>\n<li>We are seeing more adults with medical complexity as they outgrow their pediatric team, please use these one-pagers as a reference! (Med-peds attendings are a great resource in a pinch!)\n  <ul class=\"clinical-list level-2\">\n    <li>Airway Clearance one-pager (<a href=\"Airway-Clearance.pdf\" class=\"ref-link\" data-ref=\"Airway-Clearance.pdf\">Linked</a>)</li>\n    <li>Tracheostomy one-pager (<a href=\"Tracheostomies.pdf\" class=\"ref-link\" data-ref=\"Tracheostomies.pdf\">Linked</a>)</li>\n    <li>Shunts one-pager (<a href=\"shunts.pdf\" class=\"ref-link\" data-ref=\"shunts.pdf\">Linked</a>)</li>\n    <li>Baclofen pump one-pager (<a href=\"Baclofen.pdf\" class=\"ref-link\" data-ref=\"Baclofen.pdf\">Linked</a>)</li>\n    <li>G-Tube one-pager (<a href=\"Enteral-Feeding.pdf\" class=\"ref-link\" data-ref=\"Enteral-Feeding.pdf\">Linked</a>)</li>\n    <li>Autonomic Dysfunction one-pager (<a href=\"Autonomic-Dysfunction.pdf\" class=\"ref-link\" data-ref=\"Autonomic-Dysfunction.pdf\">Linked</a>)</li>\n  </ul>\n</li>\n</ul>",
+    "html": "<ul class=\"clinical-list level-1\">\n<li>Adults with medical complexity typically have complex, chronic medical conditions associated with use of medical technology and increased need for care coordination.</li>\n<li>We are seeing more adults with medical complexity as they outgrow their pediatric team, please use these one-pagers as a reference! (Med-peds attendings are a great resource in a pinch!)\n  <ul class=\"clinical-list level-2\">\n    <li><a href=\"Airway-Clearance.pdf\" class=\"ref-link\" data-ref=\"Airway-Clearance.pdf\">Airway Clearance one-pager</a></li>\n    <li><a href=\"Tracheostomies.pdf\" class=\"ref-link\" data-ref=\"Tracheostomies.pdf\">Tracheostomy one-pager</a></li>\n    <li><a href=\"shunts.pdf\" class=\"ref-link\" data-ref=\"shunts.pdf\">Shunts one-pager</a></li>\n    <li><a href=\"Baclofen.pdf\" class=\"ref-link\" data-ref=\"Baclofen.pdf\">Baclofen pump one-pager</a></li>\n    <li><a href=\"Enteral-Feeding.pdf\" class=\"ref-link\" data-ref=\"Enteral-Feeding.pdf\">G-Tube one-pager</a></li>\n    <li><a href=\"Autonomic-Dysfunction.pdf\" class=\"ref-link\" data-ref=\"Autonomic-Dysfunction.pdf\">Autonomic Dysfunction one-pager</a></li>\n  </ul>\n</li>\n</ul>",
     "sources": []
   },
   {
@@ -36,10 +64,6 @@ const SECTIONS = [
     ]
   }
 ];
-
-// ===== VALIDATION NOTE (Chunk A) =====
-// This build includes the first 5 sections only.
-// Next chunks will append additional sections without changing app architecture.
 
 /* ===========================
    DOM + STATE
@@ -62,8 +86,8 @@ const els = {
 
 const state = {
   currentIndex: null,
-  lastView: "home", // "home" | "section" | "ref"
-  searchIndex: null, // built on init
+  lastView: "home",
+  searchIndex: null,
 };
 
 /* ===========================
@@ -89,16 +113,10 @@ function setTitle(text) {
   document.title = text ? `${text} — ${APP_TITLE}` : APP_TITLE;
 }
 
-function showEl(el) {
-  el.classList.remove("hidden");
-}
-
-function hideEl(el) {
-  el.classList.add("hidden");
-}
+function showEl(el) { el.classList.remove("hidden"); }
+function hideEl(el) { el.classList.add("hidden"); }
 
 function buildSearchIndex() {
-  // Full-document search: title + body text + sources
   state.searchIndex = SECTIONS.map((s, idx) => {
     const title = String(s.title || "");
     const body = stripHtmlToText(s.html || "");
@@ -111,8 +129,7 @@ function buildSearchIndex() {
 function sectionMatchesQuery(idx, q) {
   if (!q) return true;
   const entry = state.searchIndex?.[idx];
-  if (!entry) return false;
-  return entry.haystack.includes(q);
+  return !!entry && entry.haystack.includes(q);
 }
 
 /* ===========================
@@ -148,16 +165,13 @@ function showSection(index, push = false) {
   const contentWrap = document.createElement("div");
   contentWrap.innerHTML = section.html || "";
 
-  // Fix list structure invariants
   normalizePdfListStructure(contentWrap);
 
-  // NEW: Make every primary bullet a dropdown (details/summary)
-  convertPrimaryBulletsToDropdowns(contentWrap);
+  // ✅ Apply ONLY your dropdown rules (no other auto-dropdown logic)
+  applyDropdownRules(contentWrap, String(section.title || "").trim());
 
-  // Wire ref links (dropdowns are native details, no JS required)
   wireReferenceLinks(contentWrap);
 
-  // Append sources at bottom if present
   if (Array.isArray(section.sources) && section.sources.length) {
     const sources = document.createElement("div");
     sources.className = "sources";
@@ -197,12 +211,11 @@ function showReference(refFile, push = false) {
 function renderHome(filterText) {
   if (!Array.isArray(SECTIONS) || SECTIONS.length === 0) {
     els.homeView.innerHTML =
-      `<p class="section-empty">No sections loaded. Ensure <code>script.js</code> contains <code>const SECTIONS = [...]</code> and that the deployed file matches your local version.</p>`;
+      `<p class="section-empty">No sections loaded. Ensure <code>script.js</code> contains <code>const SECTIONS = [...]</code>.</p>`;
     return;
   }
 
   const q = (filterText || "").trim().toLowerCase();
-
   const matches = SECTIONS
     .map((s, idx) => ({ ...s, idx }))
     .filter(s => sectionMatchesQuery(s.idx, q));
@@ -253,12 +266,9 @@ function wireReferenceLinks(root) {
 /* ===========================
    FIXES: PDF LIST STRUCTURE NORMALIZATION
    =========================== */
-/**
- * Repairs common PDF-to-HTML mistakes:
- * - Ensures <ul> never becomes a sibling of a <li> when it should be nested within that <li>.
- * - Ensures dropdown containers live inside <li> and do not break list structure.
- */
+
 function normalizePdfListStructure(root) {
+  // Ensure any stray <ul> directly under <ul> is nested into previous <li>
   root.querySelectorAll("ul").forEach(ul => {
     Array.from(ul.children).forEach((child, idx) => {
       if (child.tagName && child.tagName.toLowerCase() === "ul") {
@@ -269,51 +279,70 @@ function normalizePdfListStructure(root) {
       }
     });
   });
-
-  // If a .drop exists directly under a <ul>, wrap it inside a <li> (required invariant)
-  root.querySelectorAll("ul > .drop").forEach(drop => {
-    const li = document.createElement("li");
-    li.appendChild(drop);
-    drop.parentElement.insertBefore(li, drop.parentElement.firstChild);
-  });
 }
 
 /* ===========================
-   NEW: Primary bullets -> dropdowns (details/summary)
+   DROPDOWN RULE ENGINE (YOUR RULES ONLY)
    =========================== */
+
+function applyDropdownRules(root, sectionTitle) {
+  // Explicit: no dropdowns in these sections
+  if (NO_DROPDOWNS_SECTIONS.has(sectionTitle)) return;
+
+  // Convert keyword-based dropdowns anywhere in the section
+  convertListHeadingsToDropdowns(root, {
+    mode: "keyword",
+    keywords: KEYWORD_DROPDOWN_TRIGGERS,
+  });
+
+  // Arrhythmias-specific dropdowns (when that section is added later)
+  if (sectionTitle.toLowerCase() === "arrhythmias") {
+    convertListHeadingsToDropdowns(root, {
+      mode: "arrhythmias",
+      keywords: ARRHYTHMIA_DROPDOWNS,
+    });
+  }
+}
+
 /**
- * Converts every primary bullet (<ul.level-1> direct <li> children) into a dropdown.
- * - li remains the outer container (non-negotiable)
- * - dropdown (details/summary) lives inside li
- * - content below the "header" (nested lists, continuation lines, etc.) goes into the panel
+ * Converts <li> to a dropdown ONLY when:
+ * - its label matches a keyword list (depending on mode)
+ * - AND it has bullet-point content below (nested UL/OL with LI children)
+ * - AND it is not "Notes:" / "Note:"
+ * - AND li remains the outer container
+ *
+ * Also: removes the first-level bullet marker ONLY for dropdown headers (li.no-bullet)
  */
-function convertPrimaryBulletsToDropdowns(root) {
-  const topList = root.querySelector("ul.clinical-list.level-1");
-  if (!topList) return;
+function convertListHeadingsToDropdowns(root, { mode, keywords }) {
+  const lis = Array.from(root.querySelectorAll("li"));
 
-  const primaryLis = Array.from(topList.children).filter(el => el.tagName?.toLowerCase() === "li");
-
-  primaryLis.forEach(li => {
-    // Don't double-wrap if already converted
+  lis.forEach(li => {
+    // Prevent double conversion
     if (li.querySelector(":scope > details.drop")) return;
 
-    // Capture original nodes
-    const nodes = Array.from(li.childNodes);
+    const labelText = getLiLabelText(li).toLowerCase().trim();
+    if (!labelText) return;
 
-    // Determine split point: first nested UL/OL/DIV (common "body" content marker)
-    const splitIdx = nodes.findIndex(n => {
-      if (n.nodeType !== Node.ELEMENT_NODE) return false;
-      const tag = n.tagName.toLowerCase();
-      return tag === "ul" || tag === "ol" || tag === "div" || tag === "table";
+    // Never convert Notes/Note
+    if (NEVER_DROPDOWN_LABELS.has(labelText)) return;
+
+    // Must have nested list with LI children (bullet-pointed content below)
+    const nestedList = Array.from(li.children || []).find(ch => {
+      const tag = ch.tagName?.toLowerCase();
+      return tag === "ul" || tag === "ol";
     });
+    if (!nestedList) return;
 
-    const headerNodes = splitIdx === -1 ? nodes : nodes.slice(0, splitIdx);
-    const bodyNodes = splitIdx === -1 ? [] : nodes.slice(splitIdx);
+    const hasLiChildren = Array.from(nestedList.children || []).some(c => c.tagName?.toLowerCase() === "li");
+    if (!hasLiChildren) return;
 
-    // If header is empty (edge cases), treat whole thing as header
-    const safeHeaderNodes = headerNodes.length ? headerNodes : nodes;
+    // Match rules
+    const matches =
+      keywords.some(k => labelText.includes(k.toLowerCase()));
 
-    // Build details dropdown
+    if (!matches) return;
+
+    // ✅ Build dropdown with <details>/<summary> inside li
     const details = document.createElement("details");
     details.className = "drop";
 
@@ -322,9 +351,7 @@ function convertPrimaryBulletsToDropdowns(root) {
 
     const titleSpan = document.createElement("span");
     titleSpan.className = "drop-title";
-
-    // Put header nodes into titleSpan
-    safeHeaderNodes.forEach(n => titleSpan.appendChild(n));
+    titleSpan.textContent = getLiLabelText(li).trim();
 
     const chev = document.createElement("span");
     chev.className = "chev";
@@ -336,21 +363,48 @@ function convertPrimaryBulletsToDropdowns(root) {
     const panel = document.createElement("div");
     panel.className = "drop-panel";
 
-    // Move body nodes into panel (if any)
-    bodyNodes.forEach(n => panel.appendChild(n));
+    // Move nested list(s) + any additional content after label into panel
+    // We preserve all child elements except we replace them with details structure.
+    const toMove = Array.from(li.childNodes).filter(n => {
+      // Keep only element nodes that are not the label text
+      return n.nodeType === Node.ELEMENT_NODE;
+    });
+
+    toMove.forEach(n => panel.appendChild(n));
 
     details.appendChild(summary);
     details.appendChild(panel);
 
-    // Clear li and insert details
     li.innerHTML = "";
     li.appendChild(details);
 
-    // If panel ends up empty, keep it empty (no invented text), but remove extra border spacing
-    if (!panel.childNodes.length) {
-      panel.setAttribute("data-empty", "true");
+    // Remove the first-level bullet marker for this dropdown header item
+    li.classList.add("no-bullet");
+  });
+}
+
+/**
+ * Extracts the "label" text of an LI:
+ * - Uses only its direct text nodes + inline elements
+ * - Excludes text from nested UL/OL
+ */
+function getLiLabelText(li) {
+  let parts = [];
+  li.childNodes.forEach(node => {
+    if (node.nodeType === Node.TEXT_NODE) {
+      const t = node.textContent.replace(/\s+/g, " ").trim();
+      if (t) parts.push(t);
+      return;
+    }
+    if (node.nodeType === Node.ELEMENT_NODE) {
+      const tag = node.tagName.toLowerCase();
+      if (tag === "ul" || tag === "ol") return; // exclude nested list text
+      // inline / formatting elements contribute to label
+      const t = (node.textContent || "").replace(/\s+/g, " ").trim();
+      if (t) parts.push(t);
     }
   });
+  return parts.join(" ").replace(/\s+/g, " ").trim();
 }
 
 /* ===========================
@@ -384,24 +438,18 @@ function handleHashRoute() {
 
 function init() {
   setTitle("");
-
-  // Build full-document search index once
   buildSearchIndex();
 
   els.backBtn?.addEventListener("click", () => history.back());
   els.refBackBtn?.addEventListener("click", () => history.back());
   els.homeIconBtn?.addEventListener("click", () => goHome(true));
 
-  els.searchInput?.addEventListener("input", () => {
-    renderHome(els.searchInput.value);
-  });
+  els.searchInput?.addEventListener("input", () => renderHome(els.searchInput.value));
 
   els.searchInput?.addEventListener("keydown", (e) => {
     if (e.key === "Enter") {
       const q = (els.searchInput.value || "").trim().toLowerCase();
       if (!q) return;
-
-      // Jump to the top match in full-document search (title or body)
       const first = state.searchIndex?.find(entry => entry.haystack.includes(q));
       if (first) showSection(first.idx, true);
     }

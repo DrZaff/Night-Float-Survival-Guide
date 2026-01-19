@@ -363,3 +363,15 @@ a:hover{text-decoration:underline}
   color:var(--color-text-muted);
   line-height:1.35;
 }
+
+/* ...keep your existing style.css exactly as-is above... */
+
+/* ✅ Remove the first-level bullet marker ONLY for dropdown header list items */
+li.no-bullet{
+  list-style: none;
+}
+
+/* Prevent weird indentation when bullet marker is removed */
+li.no-bullet{
+  margin-left: 0;
+}
