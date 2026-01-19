@@ -197,10 +197,11 @@ a:hover{text-decoration:underline}
   line-height:1.45;
 }
 
-/* IMPORTANT: stop overriding UL padding to 0 (this broke bullet alignment) */
+/* IMPORTANT: allow list padding so wrapped text aligns under bullet text */
 .section-content ul{
   margin:0;
-  padding:0;
+  padding-left:1.25rem;
+  list-style-position:outside;
 }
 .section-content li{
   margin:0;
@@ -379,7 +380,7 @@ input[type=number]{ -moz-appearance:textfield; }
 /* PDF-derived content requires proper UL padding and list-style outside so wrapped lines align under text */
 .section-content ul.clinical-list{
   margin: .45rem 0 .65rem;
-  padding-left: 1.25rem; /* overrides .section-content ul padding:0 */
+  padding-left: 1.25rem; /* overrides generic UL padding */
   list-style-position: outside;
 }
 
@@ -400,4 +401,3 @@ input[type=number]{ -moz-appearance:textfield; }
   margin-top: .25rem;
   line-height: 1.45;
 }
-
