@@ -1,4 +1,4 @@
-const CACHE = "uc-night-float-cache-v1";
+const CACHE = "uc-night-float-cache-v2";
 const ASSETS = [
   "./",
   "./index.html",

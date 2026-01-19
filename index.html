@@ -19,17 +19,16 @@
 <body>
   <div class="app-shell">
     <header class="app-header">
-      <div class="header-left">
-        <h1 class="app-title">UC Night Float Survival Guide</h1>
-        <p class="app-subtitle">Quick-reference sections for overnight coverage. Tap a heading to open.</p>
-      </div>
-      <div class="header-right">
-        <span class="app-badge">ClinicalToolsDEV</span>
-      </div>
+      <button class="header-icon-btn" id="homeIconBtn" type="button" aria-label="Home">
+        <img class="header-icon" src="icons/icon-192.png" alt="UC Night Float Survival Guide" />
+      </button>
     </header>
 
     <main class="app-main">
       <section class="card card-search" id="home-controls">
+        <h1 class="app-title">UC Night Float Survival Guide</h1>
+        <p class="app-subtitle">Quick-reference sections for overnight coverage. Tap a heading to open.</p>
+
         <div class="search-row">
           <label class="field-label" for="searchInput">Search sections</label>
           <input id="searchInput" class="field-input" type="text" placeholder="Type to filter… (e.g., Hyperkalemia)" autocomplete="off" />
@@ -49,10 +48,28 @@
         </div>
         <div id="sectionContent" class="section-content"></div>
       </section>
+
+      <section class="card card-ref hidden" id="refView" aria-live="polite">
+        <div class="section-topbar">
+          <button class="btn-secondary" id="refBackBtn" type="button" aria-label="Back">← Back</button>
+          <div class="section-titlewrap">
+            <h2 class="card-title" id="refTitle">Reference</h2>
+            <div class="section-meta" id="refMeta"></div>
+          </div>
+        </div>
+
+        <div class="ref-frame-wrap">
+          <iframe id="refFrame" class="ref-frame" title="Reference PDF" loading="lazy"></iframe>
+        </div>
+
+        <p class="ref-hint">
+          If the PDF doesn’t load, confirm the file exists in your deployed folder and that its name matches exactly.
+        </p>
+      </section>
     </main>
 
     <footer class="app-footer">
-      <p class="disclaimer">This tool was developed using the ClinicalToolsDEV framework. For educational and decision-support purposes only. It does not replace clinical judgment, institutional guidelines, or specialist consultation.</p>
+      <p class="disclaimer">This tool is for educational and decision-support purposes only. It does not replace clinical judgment, institutional guidelines, or specialist consultation.</p>
       <p class="disclaimer subtle">If this is a medical emergency, follow your institution’s escalation pathways (rapid response / code team).</p>
     </footer>
   </div>
