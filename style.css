@@ -408,3 +408,38 @@ li.no-bullet{
   list-style: none;
   margin-left: 0;
 }
+
+/* --- keep your entire existing style.css content as-is above this line --- */
+
+/* Support <details>/<summary> dropdown markup (manual dropdowns in select sections) */
+.drop summary { list-style: none; }
+.drop summary::-webkit-details-marker { display: none; }
+
+.drop-summary{
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:.75rem;
+  padding:.75rem .9rem;
+  background:transparent;
+  color:var(--color-text-primary);
+  border:0;
+  cursor:pointer;
+  font-weight:800;
+  letter-spacing:.2px;
+}
+.drop-summary:hover{background:rgba(22,242,154,.04)}
+.drop-summary:active{background:rgba(255,255,255,.03)}
+
+.drop-summary .chev{
+  color:var(--color-text-muted);
+  font-weight:900;
+  transition:transform .14s ease;
+}
+.drop[open] .drop-summary .chev{ transform:rotate(180deg); }
+
+.drop-title{
+  font-weight:800;
+}
+
