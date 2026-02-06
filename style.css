@@ -172,12 +172,6 @@ main{
   font-weight:700;
 }
 
-
-.section-card-sub{
-  margin:.35rem 0 0;
-  font-size:.72rem;
-  color:var(--color-text-muted);
-}
 .section-empty{
   color:var(--color-text-muted);
   margin-top:1rem;
